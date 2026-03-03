@@ -51,7 +51,7 @@ data:
         Match       kube.*
         Host        172.28.50.129
         Port        514
-        Mode        tcp # test na tcp bylo udp
+        Mode        udp
         Syslog_Format rfc3164
         Syslog_Message_Key message
 
