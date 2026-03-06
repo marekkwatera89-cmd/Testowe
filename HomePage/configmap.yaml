@@ -1,134 +1,128 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-name: dashboard-config
+  name: dashboard-config
 data:
-index.html: |
-  <!DOCTYPE html>
-  <html lang="pl">
-  <head>
-    <meta charset="UTF-8">
+  index.html: |
+    <!DOCTYPE html>
+    <html lang="pl">
+    <head>
+      <meta charset="UTF-8">
+      <title>Zasoby</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
 
+      <style>
+        body {
+          margin: 0;
+          font-family: "Segoe UI", Roboto, Arial, sans-serif;
+          background: radial-gradient(circle at top,#102542,#08152a);
+          color: white;
+        }
 
-    <title>Zasoby</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        .topbar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 25px 50px;
+        }
 
- 
+        .logo img {
+          height: 48px;
+        }
 
- 
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Roboto, Arial, sans-serif;
-      background: radial-gradient(circle at top,#102542,#08152a);
-      color: white;
-    }
+        .clock {
+          font-size: 30px;
+          font-weight: 600;
+          letter-spacing: 1px;
+        }
 
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 25px 50px;
-    }
+        .title {
+          text-align: center;
+          font-size: 36px;
+          margin-top: 30px;
+          margin-bottom: 50px;
+          font-weight: 500;
+        }
 
-    .logo img {
-      height: 48px;
-    }
+        .tiles {
+          display: flex;
+          justify-content: center;
+          gap: 60px;
+          flex-wrap: wrap;
+        }
 
-    .clock {
-      font-size: 30px;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
+        .tile {
+          width: 260px;
+          height: 150px;
+          background: #1f2f47;
+          border-radius: 16px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-decoration: none;
+          color: white;
+          font-size: 20px;
+          transition: all .2s ease;
+          box-shadow: 0 10px 20px rgba(0,0,0,.35);
+        }
 
-    .title {
-      text-align: center;
-      font-size: 36px;
-      margin-top: 30px;
-      margin-bottom: 50px;
-      font-weight: 500;
-    }
+        .tile:hover {
+          transform: translateY(-6px) scale(1.03);
+          background: #2b4063;
+          box-shadow: 0 16px 30px rgba(0,0,0,.45);
+        }
 
-    .tiles {
-      display: flex;
-      justify-content: center;
-      gap: 60px;
-      flex-wrap: wrap;
-    }
+        .tile img {
+          height: 46px;
+          margin-bottom: 12px;
+        }
+      </style>
+    </head>
 
-    .tile {
-      width: 260px;
-      height: 150px;
-      background: #1f2f47;
-      border-radius: 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      color: white;
-      font-size: 20px;
-      transition: all .2s ease;
-      box-shadow: 0 10px 20px rgba(0,0,0,.35);
-    }
+    <body>
 
-    .tile:hover {
-      transform: translateY(-6px) scale(1.03);
-      background: #2b4063;
-      box-shadow: 0 16px 30px rgba(0,0,0,.45);
-    }
+      <div class="topbar">
+        <div class="logo">
+          <img src="icons/logo.png">
+        </div>
 
-    .tile img {
-      height: 46px;
-      margin-bottom: 12px;
-    }
-  </style>
-</head>
+        <div class="clock" id="clock"></div>
+      </div>
 
-<body>
+      <div class="title">
+        Zasoby
+      </div>
 
-  <div class="topbar">
-    <div class="logo">
-      <img src="icons/logo.png">
-    </div>
+      <div class="tiles">
 
-    <div class="clock" id="clock"></div>
-  </div>
+        <a class="tile" href="/zasoby">
+          <img src="icons/zasoby.svg">
+          Zasoby
+        </a>
 
-  <div class="title">
-    Zasoby
-  </div>
+        <a class="tile" href="/panel-soc">
+          <img src="icons/soc.svg">
+          Panel-SOC
+        </a>
 
-  <div class="tiles">
+        <a class="tile" href="/helpdesk">
+          <img src="icons/helpdesk.svg">
+          Helpdesk
+        </a>
 
-    <a class="tile" href="/zasoby">
-      <img src="icons/zasoby.svg">
-      Zasoby
-    </a>
+      </div>
 
-    <a class="tile" href="/panel-soc">
-      <img src="icons/soc.svg">
-      Panel-SOC
-    </a>
+      <script>
+        function updateClock(){
+          const now = new Date();
+          const time = now.toLocaleTimeString('pl-PL');
+          document.getElementById("clock").innerHTML = time;
+        }
 
-    <a class="tile" href="/helpdesk">
-      <img src="icons/helpdesk.svg">
-      Helpdesk
-    </a>
+        setInterval(updateClock,1000);
+        updateClock();
+      </script>
 
-  </div>
-
-  <script>
-    function updateClock(){
-      const now = new Date();
-      const time = now.toLocaleTimeString('pl-PL');
-      document.getElementById("clock").innerHTML = time;
-    }
-
-    setInterval(updateClock,1000);
-    updateClock();
-  </script>
-
-</body>
-</html>
-```
+    </body>
+    </html>
