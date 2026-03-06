@@ -1,28 +1,41 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: homepage
+name: homepage
+namespace: polcom
 spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: homepage
-  template:
-    metadata:
-      labels:
-        app: homepage
-    spec:
-      containers:
-      - name: nginx
-        image: nginx:alpine
-        ports:
-        - containerPort: 80
-        volumeMounts:
-        - name: html
-          mountPath: /usr/share/nginx/html/index.html
-          subPath: index.html
+replicas: 1
+selector:
+matchLabels:
+app: homepage
+template:
+metadata:
+labels:
+app: homepage
+spec:
+containers:
+- name: homepage
+image: nginx:latest
+ports:
+- containerPort: 80
 
-      volumes:
-      - name: html
-        configMap:
-          name: homepage-html
+```
+    volumeMounts:
+
+    - name: homepage-html
+      mountPath: /usr/share/nginx/html/index.html
+      subPath: index.html
+
+    - name: homepage-icons
+      mountPath: /usr/share/nginx/html/icons
+
+  volumes:
+
+  - name: homepage-html
+    configMap:
+      name: homepage-html
+
+  - name: homepage-icons
+    persistentVolumeClaim:
+      claimName: nfs-dynamic-pvc
+```
