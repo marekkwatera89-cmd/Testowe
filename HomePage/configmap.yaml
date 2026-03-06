@@ -97,17 +97,17 @@ data:
 
       <div class="tiles">
 
-        <a class="tile" href="/zasoby">
+        <a class="tile" href="cloud.polcom.com.pl" target="_blank">
           <img src="icons/zasoby.svg">
           Zasoby
         </a>
 
-        <a class="tile" href="/panel-soc">
+         <a class="tile" href="panel.rekrutacje.gov.pl" target="_blank">
           <img src="icons/soc.svg">
           Panel-SOC
         </a>
 
-        <a class="tile" href="/helpdesk">
+        <a class="tile" href="https://helpdesk.polcom.com.pl/otrs/customer.pl#Login" target="_blank">
           <img src="icons/helpdesk.svg">
           Helpdesk
         </a>
