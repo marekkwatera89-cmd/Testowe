@@ -12,78 +12,116 @@ data:
 
     <style>
 
-    body {
+    body{
       margin:0;
-      font-family: 'Segoe UI', sans-serif;
+      font-family:Segoe UI, sans-serif;
       background:#0f172a;
       color:white;
     }
 
-    .header {
-      padding:30px;
-      font-size:32px;
-      text-align:center;
+    .header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 40px;
+      font-size:20px;
+    }
+
+    #clock{
+      font-size:26px;
       font-weight:bold;
     }
 
-    .grid {
+    #weather{
+      font-size:18px;
+    }
+
+    .grid{
       display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
       gap:25px;
       padding:40px;
       max-width:900px;
       margin:auto;
     }
 
-    .card {
+    .card{
       background:#1e293b;
-      padding:30px;
+      padding:25px;
       border-radius:15px;
+      text-align:center;
       text-decoration:none;
       color:white;
-      font-size:22px;
-      text-align:center;
       transition:0.3s;
       box-shadow:0 10px 20px rgba(0,0,0,0.4);
     }
 
-    .card:hover {
-      transform: translateY(-5px);
+    .card:hover{
       background:#334155;
+      transform:translateY(-5px);
     }
 
-    .icon {
-      font-size:40px;
+    .icon{
+      width:60px;
       margin-bottom:10px;
     }
 
     </style>
 
     </head>
+
     <body>
 
     <div class="header">
-    Dashboard
+      <div id="weather">Ładowanie pogody...</div>
+      <div id="clock"></div>
     </div>
 
     <div class="grid">
 
       <a class="card" href="https://wp.pl" target="_blank">
-        <div class="icon">📰</div>
-        WP
+        <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/2/21/Wp_logo_2016.svg">
+        <div>WP</div>
       </a>
 
       <a class="card" href="https://interia.pl" target="_blank">
-        <div class="icon">🌐</div>
-        Interia
+        <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Interia_logo_2020.svg">
+        <div>Interia</div>
       </a>
 
       <a class="card" href="https://onet.pl" target="_blank">
-        <div class="icon">🧭</div>
-        Onet
+        <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Onet_logo.svg">
+        <div>Onet</div>
       </a>
 
     </div>
+
+    <script>
+
+    function updateClock(){
+      const now=new Date();
+      document.getElementById("clock").innerHTML=
+        now.toLocaleTimeString();
+    }
+
+    setInterval(updateClock,1000);
+    updateClock();
+
+
+    async function loadWeather(){
+      try{
+        const res=await fetch(
+        "https://wttr.in/Warsaw?format=3");
+        const text=await res.text();
+        document.getElementById("weather").innerHTML=text;
+      }catch{
+        document.getElementById("weather").innerHTML="Pogoda niedostępna";
+      }
+    }
+
+    loadWeather();
+
+    </script>
 
     </body>
     </html>
