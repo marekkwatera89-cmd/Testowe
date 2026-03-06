@@ -9,3 +9,10 @@ Simple static homepage deployed on Kubernetes.
 - NodePort service
 - HTML delivered via ConfigMap
 - GitOps deployment via ArgoCD
+
+
+# ikony na nfsie
+```
+kubectl cp ../../../icons/helpdesk.svg  polcom/homepage-5466f6d7b9-k99tx:/usr/share/nginx/html/icons
+
+```
