@@ -4,9 +4,13 @@ metadata:
 name: homepage-html
 namespace: polcom
 data:
-index.html: | <!DOCTYPE html> <html lang="pl"> <head> <meta charset="UTF-8"> <title>Dashboard</title>
+index.html: |
 
-```
+
+
+
+Dashboard
+
 <style>
 
 body{
@@ -123,4 +127,3 @@ loadWeather();
 
 </body>
 </html>
-```
