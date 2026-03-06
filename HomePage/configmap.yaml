@@ -8,81 +8,80 @@ data:
     <html lang="pl">
     <head>
     <meta charset="UTF-8">
-    <title>Strony</title>
+    <title>Dashboard</title>
 
     <style>
 
     body {
-        margin:0;
-        font-family: Arial, Helvetica, sans-serif;
-        background: linear-gradient(135deg,#1e3c72,#2a5298);
-        height:100vh;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        color:white;
+      margin:0;
+      font-family: 'Segoe UI', sans-serif;
+      background:#0f172a;
+      color:white;
     }
 
-    h1{
-        text-align:center;
-        margin-bottom:40px;
+    .header {
+      padding:30px;
+      font-size:32px;
+      text-align:center;
+      font-weight:bold;
     }
 
-    .container{
-        text-align:center;
+    .grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      gap:25px;
+      padding:40px;
+      max-width:900px;
+      margin:auto;
     }
 
-    .tiles{
-        display:flex;
-        gap:30px;
-        justify-content:center;
+    .card {
+      background:#1e293b;
+      padding:30px;
+      border-radius:15px;
+      text-decoration:none;
+      color:white;
+      font-size:22px;
+      text-align:center;
+      transition:0.3s;
+      box-shadow:0 10px 20px rgba(0,0,0,0.4);
     }
 
-    .tile{
-        width:200px;
-        height:150px;
-        background:white;
-        color:#333;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        font-size:24px;
-        font-weight:bold;
-        text-decoration:none;
-        border-radius:12px;
-        box-shadow:0 8px 20px rgba(0,0,0,0.3);
-        transition:0.3s;
+    .card:hover {
+      transform: translateY(-5px);
+      background:#334155;
     }
 
-    .tile:hover{
-        transform:scale(1.08);
-        box-shadow:0 12px 25px rgba(0,0,0,0.4);
+    .icon {
+      font-size:40px;
+      margin-bottom:10px;
     }
 
     </style>
-    </head>
 
+    </head>
     <body>
 
-    <div class="container">
+    <div class="header">
+    Dashboard
+    </div>
 
-        <h1>Moje strony</h1>
+    <div class="grid">
 
-        <div class="tiles">
+      <a class="card" href="https://wp.pl" target="_blank">
+        <div class="icon">📰</div>
+        WP
+      </a>
 
-            <a class="tile" href="https://wp.pl" target="_blank">
-            WP
-            </a>
+      <a class="card" href="https://interia.pl" target="_blank">
+        <div class="icon">🌐</div>
+        Interia
+      </a>
 
-            <a class="tile" href="https://interia.pl" target="_blank">
-            Interia
-            </a>
-
-            <a class="tile" href="https://onet.pl" target="_blank">
-            Onet
-            </a>
-
-        </div>
+      <a class="card" href="https://onet.pl" target="_blank">
+        <div class="icon">🧭</div>
+        Onet
+      </a>
 
     </div>
 
