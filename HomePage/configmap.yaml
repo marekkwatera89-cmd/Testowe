@@ -7,97 +7,82 @@ index.html: | <!DOCTYPE html> <html lang="pl"> <head> <meta charset="UTF-8"> <ti
 
 ```
   <style>
-
-  body{
-    margin:0;
-    font-family: "Segoe UI", Roboto, Arial, sans-serif;
-    background: radial-gradient(circle at top,#102542,#08152a);
-    color:white;
-  }
-
-  .topbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:25px 50px;
-  }
-
-  .logo img{
-    height:48px;
-  }
-
-  .clock{
-    font-size:30px;
-    font-weight:600;
-    letter-spacing:1px;
-  }
-
-  .title{
-    text-align:center;
-    font-size:36px;
-    margin-top:30px;
-    margin-bottom:50px;
-    font-weight:500;
-  }
-
-  .tiles{
-    display:flex;
-    justify-content:center;
-    gap:60px;
-    flex-wrap:wrap;
-  }
-
-  .tile{
-    width:260px;
-    height:150px;
-    background:#1f2f47;
-    border-radius:16px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-decoration:none;
-    color:white;
-    font-size:20px;
-    transition:all .2s ease;
-    box-shadow:0 10px 20px rgba(0,0,0,.35);
-  }
-
-  .tile:hover{
-    transform:translateY(-6px) scale(1.03);
-    background:#2b4063;
-    box-shadow:0 16px 30px rgba(0,0,0,.45);
-  }
-
-  .tile img{
-    height:46px;
-    margin-bottom:12px;
-  }
-
-  @media (max-width:900px){
-    .tiles{
-      gap:30px;
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: radial-gradient(circle at top,#102542,#08152a);
+      color: white;
     }
 
-    .tile{
-      width:220px;
-      height:130px;
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 50px;
     }
-  }
 
+    .logo img {
+      height: 48px;
+    }
+
+    .clock {
+      font-size: 30px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 36px;
+      margin-top: 30px;
+      margin-bottom: 50px;
+      font-weight: 500;
+    }
+
+    .tiles {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .tile {
+      width: 260px;
+      height: 150px;
+      background: #1f2f47;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: white;
+      font-size: 20px;
+      transition: all .2s ease;
+      box-shadow: 0 10px 20px rgba(0,0,0,.35);
+    }
+
+    .tile:hover {
+      transform: translateY(-6px) scale(1.03);
+      background: #2b4063;
+      box-shadow: 0 16px 30px rgba(0,0,0,.45);
+    }
+
+    .tile img {
+      height: 46px;
+      margin-bottom: 12px;
+    }
   </style>
 </head>
 
 <body>
 
   <div class="topbar">
-
     <div class="logo">
       <img src="icons/logo.png">
     </div>
 
     <div class="clock" id="clock"></div>
-
   </div>
 
   <div class="title">
@@ -124,16 +109,14 @@ index.html: | <!DOCTYPE html> <html lang="pl"> <head> <meta charset="UTF-8"> <ti
   </div>
 
   <script>
+    function updateClock(){
+      const now = new Date();
+      const time = now.toLocaleTimeString('pl-PL');
+      document.getElementById("clock").innerHTML = time;
+    }
 
-  function updateClock(){
-    const now = new Date();
-    const time = now.toLocaleTimeString('pl-PL');
-    document.getElementById("clock").innerHTML = time;
-  }
-
-  setInterval(updateClock,1000);
-  updateClock();
-
+    setInterval(updateClock,1000);
+    updateClock();
   </script>
 
 </body>
