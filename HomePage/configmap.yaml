@@ -80,18 +80,18 @@ data:
     <div class="grid">
 
       <a class="card" href="https://wp.pl" target="_blank">
-        <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/2/21/Wp_logo_2016.svg">
-        <div>WP</div>
+         <img class="icon" src="icons/proxmox.svg">
+        <div>Zasoby</div>
       </a>
 
       <a class="card" href="https://interia.pl" target="_blank">
-        <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Interia_logo_2020.svg">
-        <div>Interia</div>
+       <img class="icon" src="icons/grafana.svg">
+        <div>Panel-SOC</div>
       </a>
 
       <a class="card" href="https://onet.pl" target="_blank">
-        <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Onet_logo.svg">
-        <div>Onet</div>
+        <img class="icon" src="icons/helpdesk.svg">
+        <div>Helpdesk</div>
       </a>
 
     </div>
