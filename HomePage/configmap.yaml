@@ -9,7 +9,7 @@ data:
     <html lang="pl">
     <head>
       <meta charset="UTF-8">
-      <title>Zasoby</title>
+      <title>Zasoby KPRM</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <style>
@@ -97,12 +97,12 @@ data:
 
       <div class="tiles">
 
-        <a class="tile" href="cloud.polcom.com.pl" target="_blank">
+        <a class="tile" href="https://cloud.polcom.com.pl" target="_blank">
           <img src="icons/zasoby.svg">
           Zasoby
         </a>
 
-         <a class="tile" href="panel.rekrutacje.gov.pl" target="_blank">
+         <a class="tile" href="https://panel.rekrutacje.gov.pl" target="_blank">
           <img src="icons/soc.svg">
           Panel-SOC
         </a>
