@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homepage-html
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Home</title>
+        <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: #f2f2f2;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            margin-top: 100px;
+            gap: 30px;
+        }
+        .tile {
+            width: 200px;
+            height: 150px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: black;
+            font-size: 20px;
+            border-radius: 10px;
+        }
+        </style>
+    </head>
+    <body>
+
+    <h1>Strony</h1>
+
+    <div class="container">
+        <a class="tile" href="https://wp.pl">WP</a>
+        <a class="tile" href="https://interia.pl">Interia</a>
+        <a class="tile" href="https://onet.pl">Onet</a>
+    </div>
+
+    </body>
+    </html>
