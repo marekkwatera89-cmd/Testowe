@@ -13,21 +13,34 @@ spec:
       labels:
         app: homepage
     spec:
+
+      initContainers:
+        - name: init-icons
+          image: busybox
+          command: ["sh","-c","mkdir -p /data/icons"]
+          volumeMounts:
+            - name: homepage-icons
+              mountPath: /data
+
       containers:
         - name: homepage
           image: nginx:latest
           ports:
             - containerPort: 80
+
           volumeMounts:
             - name: homepage-html
               mountPath: /usr/share/nginx/html/index.html
               subPath: index.html
+
             - name: homepage-icons
               mountPath: /usr/share/nginx/html/icons
+
       volumes:
         - name: homepage-html
           configMap:
             name: homepage-html
+
         - name: homepage-icons
           persistentVolumeClaim:
             claimName: nfs-dynamic-pvc
