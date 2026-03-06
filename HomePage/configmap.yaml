@@ -1,7 +1,8 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: dashboard-config
+   name: homepage-html
+   namespace: polcom
 data:
   index.html: |
     <!DOCTYPE html>
