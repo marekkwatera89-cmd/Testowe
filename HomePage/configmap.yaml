@@ -43,6 +43,7 @@ data:
           margin-top: 30px;
           margin-bottom: 50px;
           font-weight: 500;
+          color: #1e293b;
         }
 
         .tiles {
