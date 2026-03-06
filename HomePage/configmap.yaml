@@ -1,129 +1,141 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: homepage-html
-  namespace: polcom
+name: dashboard-config
 data:
-  index.html: |
-    <!DOCTYPE html>
-    <html lang="pl">
-    <head>
-    <meta charset="UTF-8">
-    <title>Dashboard</title>
+index.html: | <!DOCTYPE html> <html lang="pl"> <head> <meta charset="UTF-8"> <title>Zasoby</title> <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <style>
+```
+  <style>
 
-    body{
-      margin:0;
-      font-family:Segoe UI, sans-serif;
-      background:#0f172a;
-      color:white;
+  body{
+    margin:0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: radial-gradient(circle at top,#102542,#08152a);
+    color:white;
+  }
+
+  .topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 50px;
+  }
+
+  .logo img{
+    height:48px;
+  }
+
+  .clock{
+    font-size:30px;
+    font-weight:600;
+    letter-spacing:1px;
+  }
+
+  .title{
+    text-align:center;
+    font-size:36px;
+    margin-top:30px;
+    margin-bottom:50px;
+    font-weight:500;
+  }
+
+  .tiles{
+    display:flex;
+    justify-content:center;
+    gap:60px;
+    flex-wrap:wrap;
+  }
+
+  .tile{
+    width:260px;
+    height:150px;
+    background:#1f2f47;
+    border-radius:16px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    color:white;
+    font-size:20px;
+    transition:all .2s ease;
+    box-shadow:0 10px 20px rgba(0,0,0,.35);
+  }
+
+  .tile:hover{
+    transform:translateY(-6px) scale(1.03);
+    background:#2b4063;
+    box-shadow:0 16px 30px rgba(0,0,0,.45);
+  }
+
+  .tile img{
+    height:46px;
+    margin-bottom:12px;
+  }
+
+  @media (max-width:900px){
+    .tiles{
+      gap:30px;
     }
 
-    .header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:20px 40px;
-      font-size:20px;
+    .tile{
+      width:220px;
+      height:130px;
     }
+  }
 
-    #clock{
-      font-size:26px;
-      font-weight:bold;
-    }
+  </style>
+</head>
 
-    #weather{
-      font-size:18px;
-    }
+<body>
 
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-      gap:25px;
-      padding:40px;
-      max-width:900px;
-      margin:auto;
-    }
+  <div class="topbar">
 
-    .card{
-      background:#1e293b;
-      padding:25px;
-      border-radius:15px;
-      text-align:center;
-      text-decoration:none;
-      color:white;
-      transition:0.3s;
-      box-shadow:0 10px 20px rgba(0,0,0,0.4);
-    }
-
-    .card:hover{
-      background:#334155;
-      transform:translateY(-5px);
-    }
-
-    .icon{
-      width:60px;
-      height:60px;
-      object-fit:contain;
-      margin-bottom:10px;
-    }
-
-    </style>
-
-    </head>
-
-    <body>
-
-    <div class="header">
-      <div id="weather">Ładowanie pogody...</div>
-      <div id="clock"></div>
+    <div class="logo">
+      <img src="icons/logo.png">
     </div>
 
-    <div class="grid">
+    <div class="clock" id="clock"></div>
 
-      <a class="card" href="https://proxmox.twojadomena.pl" target="_blank">
-        <img class="icon" src="icons/proxmox.svg">
-        <div>Zasoby</div>
-      </a>
+  </div>
 
-      <a class="card" href="https://grafana.twojadomena.pl" target="_blank">
-        <img class="icon" src="icons/grafana.svg">
-        <div>Panel SOC</div>
-      </a>
+  <div class="title">
+    Zasoby
+  </div>
 
-      <a class="card" href="https://helpdesk.twojadomena.pl" target="_blank">
-        <img class="icon" src="icons/helpdesk.svg">
-        <div>Helpdesk</div>
-      </a>
+  <div class="tiles">
 
-    </div>
+    <a class="tile" href="/zasoby">
+      <img src="icons/zasoby.svg">
+      Zasoby
+    </a>
 
-    <script>
+    <a class="tile" href="/panel-soc">
+      <img src="icons/soc.svg">
+      Panel-SOC
+    </a>
 
-    function updateClock(){
-      const now=new Date();
-      document.getElementById("clock").innerHTML =
-        now.toLocaleTimeString();
-    }
+    <a class="tile" href="/helpdesk">
+      <img src="icons/helpdesk.svg">
+      Helpdesk
+    </a>
 
-    setInterval(updateClock,1000);
-    updateClock();
+  </div>
 
-    async function loadWeather(){
-      try{
-        const res = await fetch(
-        "https://wttr.in/Warsaw?format=3");
-        const text = await res.text();
-        document.getElementById("weather").innerHTML = text;
-      }catch{
-        document.getElementById("weather").innerHTML = "Pogoda niedostępna";
-      }
-    }
+  <script>
 
-    loadWeather();
+  function updateClock(){
+    const now = new Date();
+    const time = now.toLocaleTimeString('pl-PL');
+    document.getElementById("clock").innerHTML = time;
+  }
 
-    </script>
+  setInterval(updateClock,1000);
+  updateClock();
 
-    </body>
-    </html>
+  </script>
+
+</body>
+</html>
+```
