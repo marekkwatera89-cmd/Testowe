@@ -16,7 +16,7 @@ data:
         body {
           margin: 0;
           font-family: "Segoe UI", Roboto, Arial, sans-serif;
-          background: linear-gradient(135deg,#eef2f7,#d9e2ec,#cbd5e1);
+          background: linear-gradient(135deg,#f1f5f9,#e2e8f0,#dbeafe);
           color: white;
         }
 
