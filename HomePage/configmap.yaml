@@ -63,6 +63,151 @@ data:
 
     .icon{
       width:60px;
+      height:60px;
+      object-fit:contain;
+      margin-bottom:10px;
+    }
+
+    </style>
+
+    </head>
+
+    <body>
+
+    <div class="header">
+      <div id="weather">Ładowanie pogody...</div>
+      <div id="clock"></div>
+    </div>
+
+    <div class="grid">
+
+      <a class="card" href="https://wp.pl" target="_blank">
+        <img class="icon" src="proxmox.svg">
+        <div>Zasoby</div>
+      </a>
+
+      <a class="card" href="https://interia.pl" target="_blank">
+        <img class="icon" src="grafana.svg">
+        <div>Panel-SOC</div>
+      </a>
+
+      <a class="card" href="https://onet.pl" target="_blank">
+        <img class="icon" src="helpdesk.svg">
+        <div>Helpdesk</div>
+      </a>
+
+    </div>
+
+    <script>
+
+    function updateClock(){
+      const now=new Date();
+      document.getElementById("clock").innerHTML=
+        now.toLocaleTimeString();
+    }
+
+    setInterval(updateClock,1000);
+    updateClock();
+
+    async function loadWeather(){
+      try{
+        const res=await fetch(
+        "https://wttr.in/Warsaw?format=3");
+        const text=await res.text();
+        document.getElementById("weather").innerHTML=text;
+      }catch{
+        document.getElementById("weather").innerHTML="Pogoda niedostępna";
+      }
+    }
+
+    loadWeather();
+
+    </script>
+
+    </body>
+    </html>
+
+  proxmox.svg: |
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+      <circle cx="128" cy="128" r="120" fill="#E57000"/>
+      <path fill="#fff" d="M128 64l64 64-64 64-64-64z"/>
+    </svg>
+
+  grafana.svg: |
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <circle cx="256" cy="256" r="240" fill="#F46800"/>
+      <circle cx="256" cy="256" r="80" fill="#fff"/>
+    </svg>
+
+  helpdesk.svg: |
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <circle cx="256" cy="256" r="240" fill="#2563eb"/>
+      <path fill="#fff" d="M128 256a128 128 0 01256 0v64h-64v-64a64 64 0 10-128 0v64h-64z"/>
+    </svg>apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homepage-html
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html lang="pl">
+    <head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+
+    <style>
+
+    body{
+      margin:0;
+      font-family:Segoe UI, sans-serif;
+      background:#0f172a;
+      color:white;
+    }
+
+    .header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 40px;
+      font-size:20px;
+    }
+
+    #clock{
+      font-size:26px;
+      font-weight:bold;
+    }
+
+    #weather{
+      font-size:18px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+      gap:25px;
+      padding:40px;
+      max-width:900px;
+      margin:auto;
+    }
+
+    .card{
+      background:#1e293b;
+      padding:25px;
+      border-radius:15px;
+      text-align:center;
+      text-decoration:none;
+      color:white;
+      transition:0.3s;
+      box-shadow:0 10px 20px rgba(0,0,0,0.4);
+    }
+
+    .card:hover{
+      background:#334155;
+      transform:translateY(-5px);
+    }
+
+    .icon{
+      width:60px;
       margin-bottom:10px;
     }
 
