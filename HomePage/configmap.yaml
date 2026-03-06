@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
 name: homepage-html
+namespace: polcom
 data:
 index.html: | <!DOCTYPE html> <html lang="pl"> <head> <meta charset="UTF-8"> <title>Dashboard</title>
 
@@ -78,17 +79,17 @@ body{
 <div class="grid">
 
   <a class="card" href="https://proxmox.twojadomena.pl" target="_blank">
-    <img class="icon" src="proxmox.svg">
+    <img class="icon" src="icons/proxmox.svg">
     <div>Zasoby</div>
   </a>
 
   <a class="card" href="https://grafana.twojadomena.pl" target="_blank">
-    <img class="icon" src="grafana.svg">
-    <div>Panel-SOC</div>
+    <img class="icon" src="icons/grafana.svg">
+    <div>Panel SOC</div>
   </a>
 
   <a class="card" href="https://helpdesk.twojadomena.pl" target="_blank">
-    <img class="icon" src="helpdesk.svg">
+    <img class="icon" src="icons/helpdesk.svg">
     <div>Helpdesk</div>
   </a>
 
@@ -123,9 +124,3 @@ loadWeather();
 </body>
 </html>
 ```
-
-proxmox.svg: | <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"> <circle cx="128" cy="128" r="120" fill="#E57000"/> <path fill="#ffffff" d="M128 60l68 68-68 68-68-68z"/> </svg>
-
-grafana.svg: | <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"> <circle cx="256" cy="256" r="240" fill="#F46800"/> <circle cx="256" cy="256" r="90" fill="#ffffff"/> </svg>
-
-helpdesk.svg: | <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"> <circle cx="256" cy="256" r="240" fill="#2563EB"/> <path fill="#ffffff" d="M128 256a128 128 0 01256 0v64h-64v-64a64 64 0 10-128 0v64h-64z"/> </svg>
