@@ -1,25 +1,25 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-name: homepage-html
-namespace: polcom
+  name: homepage-html
+  namespace: polcom
 data:
   index.html: |
+    <!DOCTYPE html>
+    <html lang="pl">
+    <head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
 
-
-    
-    
-    Dashboard
-    
     <style>
-    
+
     body{
       margin:0;
       font-family:Segoe UI, sans-serif;
       background:#0f172a;
       color:white;
     }
-    
+
     .header{
       display:flex;
       justify-content:space-between;
@@ -27,16 +27,16 @@ data:
       padding:20px 40px;
       font-size:20px;
     }
-    
+
     #clock{
       font-size:26px;
       font-weight:bold;
     }
-    
+
     #weather{
       font-size:18px;
     }
-    
+
     .grid{
       display:grid;
       grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
@@ -45,7 +45,7 @@ data:
       max-width:900px;
       margin:auto;
     }
-    
+
     .card{
       background:#1e293b;
       padding:25px;
@@ -56,74 +56,74 @@ data:
       transition:0.3s;
       box-shadow:0 10px 20px rgba(0,0,0,0.4);
     }
-    
+
     .card:hover{
       background:#334155;
       transform:translateY(-5px);
     }
-    
+
     .icon{
       width:60px;
       height:60px;
       object-fit:contain;
       margin-bottom:10px;
     }
-    
+
     </style>
-    
+
     </head>
-    
+
     <body>
-    
+
     <div class="header">
       <div id="weather">Ładowanie pogody...</div>
       <div id="clock"></div>
     </div>
-    
+
     <div class="grid">
-    
+
       <a class="card" href="https://proxmox.twojadomena.pl" target="_blank">
         <img class="icon" src="icons/proxmox.svg">
         <div>Zasoby</div>
       </a>
-    
+
       <a class="card" href="https://grafana.twojadomena.pl" target="_blank">
         <img class="icon" src="icons/grafana.svg">
         <div>Panel SOC</div>
       </a>
-    
+
       <a class="card" href="https://helpdesk.twojadomena.pl" target="_blank">
         <img class="icon" src="icons/helpdesk.svg">
         <div>Helpdesk</div>
       </a>
-    
+
     </div>
-    
+
     <script>
-    
+
     function updateClock(){
       const now=new Date();
-      document.getElementById("clock").innerHTML=
+      document.getElementById("clock").innerHTML =
         now.toLocaleTimeString();
     }
-    
+
     setInterval(updateClock,1000);
     updateClock();
-    
+
     async function loadWeather(){
       try{
-        const res=await fetch(
+        const res = await fetch(
         "https://wttr.in/Warsaw?format=3");
-        const text=await res.text();
-        document.getElementById("weather").innerHTML=text;
+        const text = await res.text();
+        document.getElementById("weather").innerHTML = text;
       }catch{
-        document.getElementById("weather").innerHTML="Pogoda niedostępna";
+        document.getElementById("weather").innerHTML = "Pogoda niedostępna";
       }
     }
-    
+
     loadWeather();
-    
+
     </script>
-    
+
     </body>
     </html>
