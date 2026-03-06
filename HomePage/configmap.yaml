@@ -92,14 +92,14 @@ data:
       </div>
 
       <div class="title">
-        Zasoby
+        Zasoby KPRM
       </div>
 
       <div class="tiles">
 
         <a class="tile" href="https://cloud.polcom.com.pl" target="_blank">
           <img src="icons/zasoby.svg">
-          Zasoby KPRM
+          Proxmox
         </a>
 
          <a class="tile" href="https://panel.rekrutacje.gov.pl" target="_blank">
